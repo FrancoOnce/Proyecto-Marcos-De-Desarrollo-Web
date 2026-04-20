@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Pedidos | Panel Administrativo Happy Chicken</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/admin/admin.css}">
+</head>
+<body class="bg-light">
+
+    <div class="admin-dashboard">
+        
+        <aside class="admin-sidebar shadow-lg" id="adminSidebar">
+            <div class="d-Aflex justify-content-end d-lg-none p-2">
+                <button class="btn btn-link text-white text-decoration-none" id="closeSidebar">
+                    <i class="bi bi-x-lg fs-4"></i>
+                </button>
+            </div>
+
+            <div class="sidebar-header text-center">
+                <img src="" alt="Happy Chicken Logo" class="sidebar-logo bg-white rounded-circle p-1 mb-2">
+                <h2 class="font-orbitron text-danger fw-bold fs-5">Admin Panel</h2>
+            </div>
+            
+            <nav class="admin-nav">
+                <a th:href="@{/admin/dashboard}"><i class="bi bi-house-door me-2"></i> Dashboard</a>
+                <a th:href="@{/admin/productos}"><i class="bi bi-card-list me-2"></i> Menú</a>
+                <a th:href="@{/admin/orders}" class="active"><i class="bi bi-receipt me-2"></i> Pedidos</a>
+                <a href="#"><i class="bi bi-people me-2"></i> Clientes (Pronto)</a>
+                
+                <div class="nav-divider my-3 border-top border-secondary opacity-25"></div>
+                
+                <a th:href="@{/index}" class="text-secondary"><i class="bi bi-box-arrow-up-right me-2"></i> Ver Tienda</a>
+                <a th:href="@{/admin/login}" id="logoutBtn" class="text-danger mt-3"><i class="bi bi-box-arrow-left me-2"></i> Cerrar Sesión</a>
+            </nav>
+        </aside>
+
+        <div class="admin-main-wrapper">
+            
+            <div class="d-lg-none bg-dark text-white p-3 d-flex align-items-center shadow-sm sticky-top">
+                <button class="btn btn-dark border-0 me-3 p-1" id="openSidebar">
+                    <i class="bi bi-list fs-1"></i>
+                </button>
+                <img src="" alt="Logo" width="35" height="35" class="bg-white rounded-circle p-1 me-2">
+                <h2 class="font-orbitron text-danger m-0 fs-5 fw-bold">Admin</h2>
+            </div>
+
+            <main class="admin-content">
+                
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4 gap-3">
+                    <h1 class="page-title font-orbitron m-0">Gestión de Pedidos</h1>
+                </div>
+
+                <div class="table-container shadow-sm bg-white rounded-4 p-4">
+                    <div class="table-responsive">
+                        <table class="admin-table w-100">
+                            <thead>
+                                <tr>
+                                    <th># Orden</th>
+                                    <th>Fecha y Hora</th>
+                                    <th>Cliente</th>
+                                    <th>Detalle</th>
+                                    <th>Total</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersTableBody">
+                                <!-- Los pedidos se inyectarán dinámicamente -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal para Detalles del Pedido -->
+    <div class="modal fade" id="orderDetailModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header bg-danger text-white border-0">
+                    <h5 class="modal-title font-orbitron fw-bold">Detalles del Pedido <span id="modalOrderId"></span></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <ul class="list-group list-group-flush mb-3" id="modalOrderItems">
+                        <!-- Lista de productos de la orden -->
+                    </ul>
+                    <div class="d-flex justify-content-between border-top pt-3 fw-bold fs-5">
+                        <span>Gran Total:</span>
+                        <span class="text-danger" id="modalOrderTotal">S/ 0.00</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('openSidebar').addEventListener('click', function() {
+            document.getElementById('adminSidebar').classList.add('show');
+        });
+        document.getElementById('closeSidebar').addEventListener('click', function() {
+            document.getElementById('adminSidebar').classList.remove('show');
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script th:src="@{/admin/orders.js}"></script>
+</body>
+</html>

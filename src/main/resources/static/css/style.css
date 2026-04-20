@@ -1,0 +1,126 @@
+/* index*/
+
+/* base - fuente */
+.font-orbitron { 
+    font-family: 'Orbitron', sans-serif; 
+}
+
+/* ofertas - promociones */
+.promo-ribbon {
+    background: linear-gradient(90deg, #ffc107, #ff9800);
+    color: #000;
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* banner */
+.hero-section {
+    background: linear-gradient(180deg, rgba(20,20,20,0.95) 0%, rgba(43,15,18,0.95) 100%), url('../img/alitasBBQ.jpeg') center/cover no-repeat;
+    min-height: 350px;
+}
+
+.emoji {
+    position: absolute;
+    top: -10%;
+    font-size: 2rem;
+    opacity: 0.4;
+    animation: fall linear infinite;
+}
+
+.emoji:nth-child(1) { left: 15%; animation-duration: 12s; }
+.emoji:nth-child(2) { left: 45%; animation-duration: 9s; font-size: 1.5rem; animation-delay: 2s; }
+.emoji:nth-child(3) { left: 75%; animation-duration: 14s; font-size: 2.5rem; }
+.emoji:nth-child(4) { left: 90%; animation-duration: 10s; animation-delay: 4s; }
+
+@keyframes fall {
+    0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.8; }
+    100% { transform: translateY(120vh) rotate(360deg); opacity: 0; }
+}
+
+.product-card {
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05) !important;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(220, 53, 69, 0.15) !important;
+}
+
+/* ajuste para que las imagenes midan igual */
+.product-card img {
+    height: 220px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.custom-category-list .list-group-item {
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+}
+
+.custom-category-list .list-group-item:hover {
+    background-color: #f8f9fa;
+    color: #dc3545;
+    border-left-color: #dc3545;
+}
+
+.custom-category-list .active-category {
+    background-color: #dc3545 !important;
+    color: white !important;
+    font-weight: bold;
+    border-left-color: #b02a37;
+}
+
+/* Contacto */
+
+/* contenedor principal */
+.contact-wrapper-dark {
+    background: linear-gradient(135deg, #121212 0%, #2b0f12 100%);
+    border: 1px solid rgba(220, 53, 69, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+/* tarjetas de informacion */
+.info-item-dark {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.info-item-dark:hover {
+    transform: translateX(10px);
+    background: rgba(220, 53, 69, 0.15);
+    border-color: rgba(220, 53, 69, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.glass-input {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.glass-input::placeholder {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* efecto al hacer clic en los inputs */
+.glass-input:focus {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 10px rgba(220, 53, 69, 0.3) !important;
+}
+
+select.glass-input option {
+    background-color: #121212;
+    color: white;
+}
+
